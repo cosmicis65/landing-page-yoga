@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Realign Yoga Therapy — Therapeutic yoga for desk-bound bodies</title>
+<meta name="description" content="One-on-one yoga therapy for people who sit at a computer all day. Support for back pain, neck pain, weight loss, and blood-sugar management. Book a free consultation." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --sage: #5a7d6a;
+    --sage-dark: #3f5c4e;
+    --sage-soft: #e8efe9;
+    --cream: #f7f4ef;
+    --charcoal: #2c2c2c;
+    --terracotta: #c97b5a;
+    --terracotta-dark: #b5653f;
+    --muted: #6b6b6b;
+    --border: #e5dfd5;
+    --white: #ffffff;
+    --radius: 14px;
+    --shadow-sm: 0 1px 3px rgba(44, 44, 44, 0.06), 0 1px 2px rgba(44, 44, 44, 0.04);
+    --shadow-md: 0 10px 30px rgba(44, 44, 44, 0.08);
+    --maxw: 1120px;
+    color-scheme: light;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    color: var(--charcoal);
+    background: var(--cream);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: "Fraunces", Georgia, "Times New Roman", serif;
+    font-weight: 500;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    color: var(--charcoal);
+  }
+
+  h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); }
+  h2 { font-size: clamp(1.7rem, 3.5vw, 2.5rem); }
+  h3 { font-size: 1.2rem; font-weight: 600; }
+
+  p { color: var(--muted); }
+  p.lead { font-size: clamp(1.05rem, 2vw, 1.2rem); color: #4a4a4a; }
+
+  a { color: var(--sage-dark); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  img, svg { max-width: 100%; display: block; }
+
+  .wrap {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  section { padding: clamp(56px, 9vw, 104px) 0; }
+
+  .eyebrow {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sage-dark);
+    margin-bottom: 14px;
+  }
+
+  /* ---------- Buttons ---------- */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font: inherit;
+    font-weight: 600;
+    font-size: 0.98rem;
+    padding: 14px 26px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+    text-decoration: none;
+  }
+  .btn:hover { text-decoration: none; transform: translateY(-1px); }
+  .btn-primary {
+    background: var(--terracotta);
+    color: #fff;
+    box-shadow: var(--shadow-sm);
+  }
+  .btn-primary:hover { background: var(--terracotta-dark); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--sage-dark);
+    border-color: var(--sage);
+  }
+  .btn-secondary:hover { background: var(--sage-soft); }
+  .btn-ghost {
+    background: var(--white);
+    color: var(--charcoal);
+    border-color: var(--border);
+  }
+  .btn-ghost:hover { border-color: var(--sage); }
+
+  /* ---------- Header ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(247, 244, 239, 0.85);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  header.scrolled {
+    border-color: var(--border);
+    box-shadow: var(--shadow-sm);
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 72px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    font-size: 1.15rem;
+    color: var(--charcoal);
+  }
+  .brand:hover { text-decoration: none; }
+  .brand .mark {
+    width: 34px;
+    height: 34px;
+    flex: none;
+  }
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: var(--charcoal);
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+  .nav-links a:hover { color: var(--sage-dark); text-decoration: none; }
+  .nav-cta { display: flex; align-items: center; gap: 14px; }
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    padding: 8px;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--charcoal);
+    margin: 5px 0;
+    transition: 0.2s ease;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    padding-top: clamp(40px, 6vw, 72px);
+    padding-bottom: clamp(48px, 8vw, 96px);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 56px;
+    align-items: center;
+  }
+  .hero h1 { margin-bottom: 20px; }
+  .hero h1 .accent { color: var(--sage-dark); font-style: italic; }
+  .hero .lead { margin-bottom: 30px; max-width: 34ch; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 26px; }
+  .hero-note {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: var(--muted);
+  }
+  .hero-note svg { width: 18px; height: 18px; flex: none; color: var(--sage); }
+  .hero-art {
+    position: relative;
+    border-radius: 24px;
+    background: linear-gradient(160deg, var(--sage-soft), #dfeae0);
+    padding: 32px;
+    box-shadow: var(--shadow-md);
+  }
+  .hero-art svg { width: 100%; height: auto; }
+
+  /* ---------- Trust strip ---------- */
+  .trust {
+    background: var(--sage-dark);
+    color: #eef3ef;
+    padding: 22px 0;
+  }
+  .trust .wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px 40px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .trust p { color: #dce7de; font-size: 0.95rem; margin: 0; }
+  .trust strong { color: #fff; font-weight: 600; }
+
+  /* ---------- Pain / audience ---------- */
+  .section-head { max-width: 60ch; margin-bottom: 48px; }
+  .section-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+
+  .audience-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+  .audience-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 26px;
+    box-shadow: var(--shadow-sm);
+  }
+  .audience-card .ic {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: var(--sage-soft);
+    display: grid;
+    place-items: center;
+    margin-bottom: 16px;
+    color: var(--sage-dark);
+  }
+  .audience-card .ic svg { width: 24px; height: 24px; }
+  .audience-card h3 { margin-bottom: 8px; }
+  .audience-card p { font-size: 0.95rem; }
+
+  /* ---------- Conditions ---------- */
+  .conditions { background: var(--white); }
+  .cond-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+  }
+  .cond-card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    background: var(--cream);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .cond-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+  .cond-card .num {
+    font-family: "Fraunces", serif;
+    font-size: 0.95rem;
+    color: var(--terracotta);
+    font-weight: 600;
+  }
+  .cond-card h3 { margin: 10px 0 10px; font-size: 1.3rem; font-family: "Fraunces", serif; font-weight: 500; }
+  .cond-card p { font-size: 0.95rem; }
+  .cond-card ul { margin: 14px 0 0; padding-left: 18px; }
+  .cond-card li { font-size: 0.9rem; color: var(--muted); margin-bottom: 4px; }
+
+  /* ---------- How it works ---------- */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    counter-reset: step;
+  }
+  .step { position: relative; padding-top: 8px; }
+  .step .badge {
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    background: var(--terracotta);
+    color: #fff;
+    display: grid;
+    place-items: center;
+    font-family: "Fraunces", serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .step h3 { margin-bottom: 8px; }
+  .step p { font-size: 0.95rem; }
+
+  /* ---------- Benefits ---------- */
+  .benefits { background: var(--sage-soft); }
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px 56px;
+    align-items: start;
+  }
+  .benefits ul { list-style: none; display: grid; gap: 16px; }
+  .benefits li {
+    display: flex;
+    gap: 12px;
+    font-size: 1rem;
+    color: #3e3e3e;
+  }
+  .benefits li svg {
+    width: 22px; height: 22px; flex: none;
+    color: var(--sage-dark);
+    margin-top: 3px;
+  }
+
+  /* ---------- About ---------- */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .about-photo {
+    aspect-ratio: 4 / 5;
+    border-radius: 20px;
+    background: linear-gradient(160deg, #e3ded3, #d6ded4);
+    display: grid;
+    place-items: center;
+    color: var(--sage-dark);
+    box-shadow: var(--shadow-md);
+  }
+  .about-photo svg { width: 40%; height: auto; opacity: 0.8; }
+
+  /* ---------- Testimonials ---------- */
+  .testimonials { background: var(--white); }
+  .quote-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .quote {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+    background: var(--cream);
+  }
+  .quote p {
+    font-family: "Fraunces", serif;
+    font-size: 1.1rem;
+    color: #3a3a3a;
+    line-height: 1.5;
+    margin-bottom: 18px;
+  }
+  .quote .who { font-size: 0.9rem; color: var(--muted); font-family: "Inter", sans-serif; }
+  .quote .who strong { color: var(--charcoal); display: block; font-weight: 600; }
+  .stars { color: var(--terracotta); letter-spacing: 2px; margin-bottom: 12px; }
+
+  /* ---------- FAQ ---------- */
+  .faq-list { max-width: 780px; margin: 0 auto; }
+  details {
+    border-bottom: 1px solid var(--border);
+    padding: 20px 0;
+  }
+  details summary {
+    cursor: pointer;
+    font-family: "Fraunces", serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--charcoal);
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+  details summary::-webkit-details-marker { display: none; }
+  details summary::after {
+    content: "+";
+    font-size: 1.4rem;
+    color: var(--sage-dark);
+    transition: transform 0.2s ease;
+  }
+  details[open] summary::after { transform: rotate(45deg); }
+  details p { margin-top: 12px; font-size: 0.98rem; }
+
+  /* ---------- CTA / Booking ---------- */
+  .cta {
+    background: var(--sage-dark);
+    color: #eef3ef;
+  }
+  .cta h2, .cta h3 { color: #fff; }
+  .cta .lead { color: #d3e0d5; }
+  .cta-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    align-items: start;
+  }
+  .cta ul { list-style: none; margin-top: 24px; display: grid; gap: 12px; }
+  .cta ul li { display: flex; gap: 10px; color: #dce7de; font-size: 0.98rem; }
+  .cta ul li svg { width: 20px; height: 20px; flex: none; color: #a9c6b3; margin-top: 3px; }
+
+  .card {
+    background: var(--white);
+    border-radius: 18px;
+    padding: 32px;
+    box-shadow: var(--shadow-md);
+  }
+  .card h3 { color: var(--charcoal); margin-bottom: 6px; }
+  .card > p { font-size: 0.92rem; margin-bottom: 20px; }
+  .calendly-inline-widget {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--white);
+  }
+  .form-fineprint { font-size: 0.78rem; color: var(--muted); margin-top: 14px; }
+
+  /* ---------- Footer ---------- */
+  footer {
+    background: var(--charcoal);
+    color: #c9c9c9;
+    padding: 56px 0 32px;
+    font-size: 0.9rem;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 36px;
+  }
+  footer h4 {
+    color: #fff;
+    font-family: "Inter", sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  footer a { color: #c9c9c9; }
+  footer a:hover { color: #fff; }
+  footer ul { list-style: none; display: grid; gap: 8px; }
+  .footer-brand { display: flex; align-items: center; gap: 10px; color: #fff; font-family: "Fraunces", serif; font-size: 1.1rem; margin-bottom: 12px; }
+  .footer-brand .mark { width: 30px; height: 30px; }
+  .footer-bottom {
+    border-top: 1px solid #3f3f3f;
+    padding-top: 22px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: space-between;
+    color: #9a9a9a;
+    font-size: 0.82rem;
+  }
+  .disclaimer {
+    background: #262626;
+    border: 1px solid #3f3f3f;
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 0.8rem;
+    color: #a8a8a8;
+    margin-bottom: 28px;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 960px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 40px; }
+    .hero .lead { max-width: none; }
+    .hero-art { order: -1; }
+    .steps { grid-template-columns: 1fr; gap: 22px; }
+    .benefits-grid { grid-template-columns: 1fr; gap: 28px; }
+    .about-grid { grid-template-columns: 1fr; gap: 32px; }
+    .cta-grid { grid-template-columns: 1fr; gap: 36px; }
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 720px) {
+    .nav-links { display: none; }
+    .nav-toggle { display: block; }
+    .nav-cta .btn { display: none; }
+    header.open .nav-links {
+      display: flex;
+      position: absolute;
+      top: 72px;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      gap: 4px;
+      background: var(--cream);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 24px 20px;
+    }
+    header.open .nav-links a { padding: 10px 0; width: 100%; }
+    .footer-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { transition: none !important; }
+  }
+
+  :focus-visible { outline: 3px solid var(--terracotta); outline-offset: 2px; border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header id="site-header">
+  <div class="wrap nav">
+    <a href="#top" class="brand" aria-label="Realign Yoga Therapy home">
+      <svg class="mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <circle cx="20" cy="20" r="19" stroke="#5a7d6a" stroke-width="2"/>
+        <path d="M20 8c-3 5-3 9 0 12 3-3 3-7 0-12z" fill="#5a7d6a"/>
+        <path d="M11 26c4-2 8-2 9 1-3 2-7 2-9-1z" fill="#c97b5a"/>
+        <path d="M29 26c-4-2-8-2-9 1 3 2 7 2 9-1z" fill="#c97b5a"/>
+      </svg>
+      Realign
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#who">Who it's for</a></li>
+      <li><a href="#conditions">Focus areas</a></li>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+
+    <div class="nav-cta">
+      <a href="#book" class="btn btn-primary">Book a free consultation</a>
+      <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<a id="top"></a>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">Therapeutic yoga · one-on-one</span>
+      <h1>Your chair is not <span class="accent">going anywhere.</span> Your back pain can.</h1>
+      <p class="lead">
+        Realign Yoga Therapy helps people who sit at a computer all day undo the
+        damage of long hours, poor posture, and stalled routines — with a plan
+        built around your body, not a generic class.
+      </p>
+      <div class="hero-actions">
+        <a href="#book" class="btn btn-primary">Book a free consultation</a>
+        <a href="#how" class="btn btn-secondary">See how it works</a>
+      </div>
+      <p class="hero-note">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+        30-minute call · no obligation · online or in person
+      </p>
+    </div>
+
+    <div class="hero-art">
+      <svg viewBox="0 0 420 360" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Line illustration of a person seated in a calm, upright posture">
+        <circle cx="210" cy="150" r="120" fill="#ffffff" opacity="0.55"/>
+        <circle cx="210" cy="150" r="120" stroke="#5a7d6a" stroke-width="1.5" opacity="0.5"/>
+        <path d="M60 300h300" stroke="#3f5c4e" stroke-width="3" stroke-linecap="round"/>
+        <!-- seated figure -->
+        <circle cx="210" cy="96" r="20" stroke="#2c2c2c" stroke-width="3"/>
+        <path d="M210 116c-26 6-40 28-40 60v40" stroke="#2c2c2c" stroke-width="3" stroke-linecap="round"/>
+        <path d="M210 116c26 6 40 28 40 60v40" stroke="#2c2c2c" stroke-width="3" stroke-linecap="round"/>
+        <path d="M170 216c-30 4-52 22-58 50h136c6-28-16-46-46-50" stroke="#2c2c2c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M150 300c0-16 8-30 24-40M270 300c0-16-8-30-24-40" stroke="#c97b5a" stroke-width="3" stroke-linecap="round"/>
+        <path d="M186 168c16 10 32 10 48 0" stroke="#5a7d6a" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST STRIP ============ -->
+<div class="trust">
+  <div class="wrap">
+    <p><strong>8+ hrs/day</strong> is the average time a desk worker spends sitting</p>
+    <p><strong>1 in 4</strong> office workers report chronic back or neck pain</p>
+    <p><strong>Yoga therapy</strong> is used alongside medical care for pain, stress &amp; metabolic health</p>
+  </div>
+</div>
+
+<!-- ============ WHO IT'S FOR ============ -->
+<section id="who">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Who this is for</span>
+      <h2>Built for the body that works at a desk</h2>
+      <p class="lead">If most of your day looks like this, your practice should be designed for it.</p>
+    </div>
+
+    <div class="audience-grid">
+      <div class="audience-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
+        <h3>Long hours at the screen</h3>
+        <p>You sit for extended stretches without a real break, and your shoulders, hips, and lower back are paying for it.</p>
+      </div>
+      <div class="audience-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 0 1-3.4 0"/></svg></div>
+        <h3>Stalled routines</h3>
+        <p>Exercise keeps slipping. You want something structured, gentle to start, and easy to keep doing on a busy week.</p>
+      </div>
+      <div class="audience-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2M7 2v20M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg></div>
+        <h3>Eating &amp; energy in flux</h3>
+        <p>Irregular meals, low energy, weight creeping up. You're looking for a calmer, more consistent baseline.</p>
+      </div>
+      <div class="audience-card">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+        <h3>Managing a condition</h3>
+        <p>You're working with a doctor on blood sugar, blood pressure, or weight, and want movement that supports that plan safely.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONDITIONS / FOCUS AREAS ============ -->
+<section id="conditions" class="conditions">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Focus areas</span>
+      <h2>Four things we work on most</h2>
+      <p class="lead">
+        Every plan is personalised, but these are the concerns people most often
+        bring to Realign. Yoga therapy here is complementary to your medical
+        care — never a replacement for it.
+      </p>
+    </div>
+
+    <div class="cond-grid">
+      <div class="cond-card">
+        <span class="num">01</span>
+        <h3>Back pain</h3>
+        <p>Ease the load on a spine that's been flexed forward all day and rebuild the support around it.</p>
+        <ul>
+          <li>Gentle mobility for a stiff lower back</li>
+          <li>Core and glute strength that protects the spine</li>
+          <li>Posture habits you can use at your desk</li>
+        </ul>
+      </div>
+      <div class="cond-card">
+        <span class="num">02</span>
+        <h3>Neck &amp; shoulder pain</h3>
+        <p>Release the tension pattern that builds from screens, phones, and a forward head position.</p>
+        <ul>
+          <li>Targeted release for neck and upper back</li>
+          <li>Strengthening for deep neck and shoulder support</li>
+          <li>Breathing that unclenches the jaw and shoulders</li>
+        </ul>
+      </div>
+      <div class="cond-card">
+        <span class="num">03</span>
+        <h3>Weight loss support</h3>
+        <p>Build a sustainable, low-injury-risk movement habit and a calmer relationship with stress and food.</p>
+        <ul>
+          <li>Progressive, strength-building sequences</li>
+          <li>Routines short enough to actually repeat</li>
+          <li>Stress and sleep tools that support appetite regulation</li>
+        </ul>
+      </div>
+      <div class="cond-card">
+        <span class="num">04</span>
+        <h3>Blood-sugar &amp; metabolic health</h3>
+        <p>For people managing type 2 diabetes or prediabetes with their doctor — movement designed to fit that plan.</p>
+        <ul>
+          <li>Regular, moderate activity you can keep up</li>
+          <li>Post-meal movement to support glucose response</li>
+          <li>Breathwork and relaxation for stress load</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">How it works</span>
+      <h2>A simple path to a practice that fits</h2>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="badge">1</div>
+        <h3>Free consultation</h3>
+        <p>A 30-minute call to hear your history, your goals, your medical picture, and how much time you realistically have. No obligation.</p>
+      </div>
+      <div class="step">
+        <div class="badge">2</div>
+        <h3>Your personalised plan</h3>
+        <p>You get a therapy plan matched to your body and schedule — sessions, a short home routine, and desk-friendly resets you can do between meetings.</p>
+      </div>
+      <div class="step">
+        <div class="badge">3</div>
+        <h3>Practice &amp; adjust</h3>
+        <p>We meet regularly, track how you feel, and adjust as you progress. Your doctor stays in the loop whenever a condition is involved.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:40px;">
+      <a href="#book" class="btn btn-primary">Start with a free consultation</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BENEFITS ============ -->
+<section class="benefits">
+  <div class="wrap benefits-grid">
+    <div>
+      <span class="eyebrow">Why yoga therapy</span>
+      <h2>Not a class. A plan for your body.</h2>
+      <p class="lead" style="margin-top:14px;">
+        A group class moves everyone through the same shapes. Yoga therapy starts
+        from where you are — your pain, your history, your goals — and changes as
+        you do.
+      </p>
+      <a href="#book" class="btn btn-secondary" style="margin-top:22px;">Book a free consultation</a>
+    </div>
+    <ul>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><strong>One-on-one attention</strong> — every session is built and adjusted for you.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Safe with medical conditions</strong> — we work around diabetes, blood pressure, injuries, and pain.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Fits a working day</strong> — short home routines and desk resets, not another hour you don't have.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Addresses the stress side</strong> — breathwork and relaxation that help sleep, appetite, and tension.</span></li>
+      <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg><span><strong>Progress you can feel</strong> — we track how you're doing and change the plan to match.</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about">
+  <div class="wrap about-grid">
+    <div class="about-photo" aria-label="Photo of the yoga therapist — placeholder">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+    </div>
+    <div>
+      <span class="eyebrow">About</span>
+      <h2>Hi, I'm [Instructor Name]</h2>
+      <p class="lead" style="margin:14px 0;">
+        [Replace this with your background.] I'm a certified yoga therapist with
+        [X] years of experience helping desk-based professionals and people
+        managing chronic conditions move with less pain and more consistency.
+      </p>
+      <p>
+        [Add credentials: training body / certification, e.g. C-IAYT, RYT-500,
+        any clinical or physiotherapy background, and the kinds of clients you've
+        worked with. Mention that you coordinate with clients' doctors where
+        relevant.]
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="testimonials">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="eyebrow">In their words</span>
+      <h2>What clients say</h2>
+      <p class="lead">[Replace with real testimonials once you have consent to use them.]</p>
+    </div>
+    <div class="quote-grid">
+      <div class="quote">
+        <div class="stars" aria-hidden="true">★★★★★</div>
+        <p>"After years of desk work my lower back was constant. Six weeks in, the morning stiffness is basically gone."</p>
+        <div class="who"><strong>[Client name]</strong> Software engineer</div>
+      </div>
+      <div class="quote">
+        <div class="stars" aria-hidden="true">★★★★★</div>
+        <p>"The routines are short enough that I actually do them. My doctor is happy with where my numbers are heading."</p>
+        <div class="who"><strong>[Client name]</strong> Managing type 2 diabetes</div>
+      </div>
+      <div class="quote">
+        <div class="stars" aria-hidden="true">★★★★★</div>
+        <p>"I've tried classes before and quit. Having a plan made for me — and someone checking in — is what stuck."</p>
+        <div class="who"><strong>[Client name]</strong> Weight-loss journey</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA / BOOKING ============ -->
+<section id="book" class="cta">
+  <div class="wrap cta-grid">
+    <div>
+      <span class="eyebrow" style="color:#a9c6b3;">Free consultation</span>
+      <h2>Book your 30-minute call</h2>
+      <p class="lead">
+        Tell me a little about what's going on. We'll talk through your goals and
+        whether yoga therapy is a good fit — no pressure, no obligation.
+      </p>
+      <ul>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Online or in person</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>No cost and no commitment</li>
+        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>You'll leave with at least one thing to try</li>
+      </ul>
+    </div>
+
+    <div class="card calendly-card">
+      <h3>Pick a time that suits you</h3>
+      <p>Choose a free 30-minute slot below — you'll get an instant confirmation and a calendar invite.</p>
+
+      <!-- Calendly inline widget begin -->
+      <!--
+        Your Calendly event link is set below. To change it later, edit only the
+        `calendly.com/<handle>/<event>` part of data-url and keep the ?query params
+        (they theme the widget to match this page).
+      -->
+      <div
+        id="calendly-embed"
+        class="calendly-inline-widget"
+        data-url="https://calendly.com/cosmicis65/30min?hide_gdpr_banner=1&background_color=ffffff&text_color=2c2c2c&primary_color=c97b5a"
+        style="min-width:300px;height:660px;"
+        role="region"
+        aria-label="Booking calendar"
+      ></div>
+      <!-- Calendly inline widget end -->
+
+      <p class="form-fineprint">
+        Scheduler not loading? Email
+        <a href="mailto:hello@example.com">hello@example.com</a> or call
+        <a href="tel:+10000000000">+1 (000) 000-0000</a> and I'll find a time with you.
+        Not for medical emergencies.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="eyebrow">Questions</span>
+      <h2>Good to know</h2>
+    </div>
+
+    <div class="faq-list">
+      <details>
+        <summary>I'm not flexible and I've never done yoga. Is this for me?</summary>
+        <p>Yes — that's the norm here, not the exception. Yoga therapy meets you at your current mobility and builds from there. Nothing requires you to touch your toes.</p>
+      </details>
+      <details>
+        <summary>I have type 2 diabetes / high blood pressure / a disc issue. Can I still take part?</summary>
+        <p>Usually yes, with the right adjustments. The free consultation covers your medical history, and for anything significant I'll ask you to check with your doctor and, where helpful, coordinate with them. Yoga therapy complements medical treatment; it doesn't replace it.</p>
+      </details>
+      <details>
+        <summary>How much time does it take each week?</summary>
+        <p>A typical plan is one session together plus a short home routine (often 10–20 minutes) a few times a week, along with quick desk resets. It's designed to survive a busy week.</p>
+      </details>
+      <details>
+        <summary>Is it online or in person?</summary>
+        <p>Both are available. Many clients do the consultation and regular sessions online, and some prefer in person for the first few. We'll pick what suits you.</p>
+      </details>
+      <details>
+        <summary>What does it cost?</summary>
+        <p>The consultation is free. [Add your session and package pricing here.]</p>
+      </details>
+      <details>
+        <summary>Will this cure my back pain / reverse my diabetes?</summary>
+        <p>No responsible practitioner can promise that. What yoga therapy can do is reduce pain and stiffness for many people, build a sustainable movement habit, and support the lifestyle changes your healthcare team recommends. Results vary from person to person.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="disclaimer">
+      <strong>Health disclaimer:</strong> Realign Yoga Therapy provides
+      complementary movement and wellbeing support. It is not medical advice,
+      diagnosis, or treatment, and does not replace care from a qualified
+      healthcare professional. Consult your doctor before starting any new
+      exercise programme, especially if you have a medical condition, are
+      pregnant, or take medication that affects blood sugar or blood pressure. If
+      you experience chest pain, dizziness, or other concerning symptoms, stop
+      and seek medical help.
+    </div>
+
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <svg class="mark" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+            <circle cx="20" cy="20" r="19" stroke="#e0e0e0" stroke-width="2"/>
+            <path d="M20 8c-3 5-3 9 0 12 3-3 3-7 0-12z" fill="#8fb39d"/>
+            <path d="M11 26c4-2 8-2 9 1-3 2-7 2-9-1z" fill="#c97b5a"/>
+            <path d="M29 26c-4-2-8-2-9 1 3 2 7 2 9-1z" fill="#c97b5a"/>
+          </svg>
+          Realign Yoga Therapy
+        </div>
+        <p style="color:#a8a8a8;max-width:38ch;">Therapeutic yoga for desk-bound bodies — back pain, neck pain, weight loss, and metabolic health support.</p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="#who">Who it's for</a></li>
+          <li><a href="#conditions">Focus areas</a></li>
+          <li><a href="#how">How it works</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:hello@example.com">hello@example.com</a></li>
+          <li><a href="tel:+10000000000">+1 (000) 000-0000</a></li>
+          <li><a href="#book">Book a free consultation</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Realign Yoga Therapy. All rights reserved.</span>
+      <span>[Add: Privacy Policy · Terms]</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Calendly embed script -->
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+
+<script>
+  // Year
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Sticky header shadow
+  var header = document.getElementById("site-header");
+  var onScroll = function () {
+    header.classList.toggle("scrolled", window.scrollY > 8);
+  };
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  // Mobile nav toggle
+  var toggle = document.querySelector(".nav-toggle");
+  toggle.addEventListener("click", function () {
+    var open = header.classList.toggle("open");
+    toggle.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  document.querySelectorAll(".nav-links a").forEach(function (link) {
+    link.addEventListener("click", function () {
+      header.classList.remove("open");
+      toggle.setAttribute("aria-expanded", "false");
+    });
+  });
+
+  // Booking is handled by the Calendly inline widget (script loaded below).
+  // Nothing to wire up here — set your event link in the data-url attribute
+  // on #calendly-embed.
+</script>
+
+</body>
+</html>
